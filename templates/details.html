@@ -1,0 +1,24 @@
+{% extends 'common.html' %}
+{% block content %}
+
+   <div class="hero-unit">
+<span style="font-size:20px; font-weight:bold">{{context['name']}}'s</span> Opportunities in 
+<span style="font-size:20px; font-weight:bold">{{context['stage']}}</span>
+<table>
+   <tr>
+      <th>Name</th>
+      <th>LastModifiedDate</th>
+      <th>Amount</th>
+      <th>CloseDate</th>
+   </tr>
+   {% for row in context['stage_details'] %}
+   <tr>
+      <td><a href="https://na11.salesforce.com/{{row['Id']}}" target="_blank">{{row['Name']}}</a></td>
+      <td>{{row['LastModifiedDate']}}</td>
+      <td>{{row['Amount']}}</td>
+      <td>{{row['CloseDate']}}</td>
+   </tr>
+   {% endfor %}
+</table> 
+</div>
+{% endblock %}

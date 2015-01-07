@@ -1,0 +1,98 @@
+{% extends 'common.html' %}
+{% block content %}
+  
+   <div class="hero-unit">
+      <u><h1>Genghis Kon</h1></u>
+         <span style="float:right;"><h4><a href="/se_team">SE Team Summary</a></h4></span>
+         <h4>Last Modified Intervals</h4>
+         <table id='ModifiedDates' class='tablesorter'>
+            <thead>
+            <tr>
+               <th>Stage</th>
+               <th>1 Week</th>
+               <th>2 Weeks</th>
+               <th>1 Month</th>
+               <th>2 Months</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in context['modified_intervals'] %}
+            <tr>
+               <td>{{row['Stage']}}</td>
+               <td>{{row['OneWeeks']}}</td>
+               <td>{{row['TwoWeeks']}}</td>
+               <td>{{row['OneMonth']}}</td>
+               <td>{{row['TwoMonth']}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+         </table> 
+      <div style="width:100%; height:15px"></div>
+      <h4>Weekly Opportunities Movements</h4>   
+         <table>
+            <tr>
+               <th>Week</th>
+               <th>Prospecting</th>
+               <th>Qualified</th>
+               <th>Solution Design</th>
+               <th>Proposal</th>
+               <th>Contract Review</th>
+               <th>Pending Closed</th>
+               <th>Paid POC</th>
+               <th>Won</th>
+               <th>Lost</th>
+               <th>Suspended</th>
+            </tr>
+            {% for row in context['pipeline_movements'] %}
+            <tr>
+               <td>{{row['Week']}}</td>
+               <td>{{row['Prospecting']}}</td>
+               <td>{{row['Qualified']}}</td>
+               <td>{{row['SolutionDesign']}}</td>
+               <td>{{row['Proposal']}}</td>
+               <td>{{row['ContractReview']}}</td>
+               <td>{{row['PendingClosed']}}</td>
+               <td>{{row['PaidPOC']}}</td>
+               <td>{{row['Won']}}</td>
+               <td>{{row['Lost']}}</td>
+               <td>{{row['Suspended']}}</td>
+            </tr>
+            {% endfor %}
+         </table> 
+
+     
+      <div style="width:100%; height:15px"></div>
+      <h4>User Opportunities</h4>   
+         <table>
+            <tr>
+               <th>Name</th>
+               <th>Prospecting</th>
+               <th>Qualified</th>
+               <th>Solution Design</th>
+               <th>Proposal</th>
+               <th>Contract Review</th>
+               <th>Pending Closed</th>
+               <th>Paid POC</th>
+               <th>Won</th>
+               <th>Lost</th>
+               <th>Suspended</th>
+            </tr>
+            {% for row in context['rep_deals'] %}
+            <tr>
+               <td>{{row['Name']}}</td>
+               <td><a href="/details?stage=Prospecting&name={{row['Name']}}"><a href="/details?stage=Prospecting&name={{row['Name']}}">{{row['Prospecting']}}</a></td>
+               <td><a href="/details?stage=Qualified Opportunity&name={{row['Name']}}">{{row['Qualified']}}</a></td>
+               <td><a href="/details?stage=Solution Design&name={{row['Name']}}">{{row['SolutionDesign']}}</a></td>
+               <td><a href="/details?stage=Proposal&name={{row['Name']}}">{{row['Proposal']}}</a></td>
+               <td><a href="/details?stage=Contract Review&name={{row['Name']}}">{{row['ContractReview']}}</a></td>
+               <td><a href="/details?stage=Pending Closed&name={{row['Name']}}">{{row['PendingClosed']}}</a></td>
+               <td><a href="/details?stage=Paid POC&name={{row['Name']}}">{{row['PaidPOC']}}</a></td>
+               <td><a href="/details?stage=Closed Won&name={{row['Name']}}">{{row['Won']}}</a></td>
+               <td><a href="/details?stage=Closed Lost&name={{row['Name']}}">{{row['Lost']}}</a></td>
+               <td><a href="/details?stage=Close Suspended&name={{row['Name']}}">{{row['Suspended']}}</a></td>
+            </tr>
+            {% endfor %}
+         </table> 
+
+   </div>
+{% endblock %}

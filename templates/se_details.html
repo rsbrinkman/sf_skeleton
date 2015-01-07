@@ -1,0 +1,65 @@
+{% extends 'common.html' %}
+{% block content %}
+
+<div class="hero-unit">
+<h1>SE Team</h1>
+<h2>Product and Competition Completion Rates</h2>
+<table>
+   <tr>
+      <th>Competitors Completed</th>
+      <th>Competitors Not Completed</th>
+      <th>Product Interest Completed</th>
+      <th>Product Intrest Not Completed</th>
+      <th>Product Completion %</th>
+      <th>Competitor Completion %</th>
+   </tr>
+
+
+{% for row in context['se_comp_product_completion']%}
+   <tr>
+      <td>{{row['Competitors']}}</td>
+      <td>{{row['NoCompetitors']}}</td>
+      <td>{{row['ProductInterest']}}</td>
+      <td>{{row['NoProductInterest']}}</td>
+      <td>{{row['ProductCompletion']}}</td>
+      <td>{{row['CompetitorCompletion']}}</td>
+   </tr>
+
+{% endfor %}
+</table>
+<h2>SE Team Summary</h2>
+<table>
+   <tr>
+      <th>Name</th>
+      <th>Total Opportunities</th>
+      <th>Prospecting</th>
+      <th>Qualified</th>
+      <th>Solution Design</th>
+      <th>Proposal</th>
+      <th>Contract Review</th>
+      <th>Pending Closed</th>
+      <th>Paid POC</th>
+      <th>Won</th>
+      <th>Lost</th>
+      <th>Suspended</th>
+   </tr>
+{% for row in context['se_summary'] %}
+   <tr>
+      <td>{{row['SE']}}</a></td>
+      <td>{{row['Total']}}</td>
+      <td><a href="/details?stage=Prospecting&se_name={{row['SeOwner']}}">{{row['Prospecting']}}</a></td>
+      <td><a href="/details?stage=Qualified Opportunity&se_name={{row['SeOwner']}}">{{row['Qualified']}}</a></td>
+      <td><a href="/details?stage=Solution Design&se_name={{row['SeOwner']}}">{{row['SolutionDesign']}}</a></td>
+      <td><a href="/details?stage=Proposal&se_name={{row['SeOwner']}}">{{row['Proposal']}}</a></td>
+      <td><a href="/details?stage=Contract Review&se_name={{row['SeOwner']}}">{{row['ContractReview']}}</a></td>
+      <td><a href="/details?stage=Pending Closed&se_name={{row['SeOwner']}}">{{row['PendingClosed']}}</a></td>
+      <td><a href="/details?stage=Paid POC&se_name={{row['SeOwner']}}">{{row['PaidPOC']}}</a></td>
+      <td><a href="/details?stage=Closed Won&se_name={{row['SeOwner']}}">{{row['Won']}}</a></td>
+      <td><a href="/details?stage=Closed Lost&se_name={{row['SeOwner']}}">{{row['Lost']}}</a></td>
+      <td><a href="/details?stage=Close Suspended&se_name={{row['SeOwner']}}">{{row['Suspended']}}</a></td>
+   </tr>
+{% endfor %}
+</table>
+
+</div>
+{% endblock %}
